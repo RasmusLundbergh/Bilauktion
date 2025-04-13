@@ -13,32 +13,27 @@ public class CarAuctionController {
     }
 
     public void start() {
-        // Opret biler
         Car car1 = new Car("Toyota", "Corolla", 2018, 135000.0, "AB12345");
         Car car2 = new Car("Volkswagen", "Golf", 2020, 165000.0, "CD67890");
         Car car3 = new Car("Ford", "Focus", 2017, 125000.0, "EF24680");
 
 
-        // Tilføj biler til carRepo (Repository)
         carService.addCar(car1);
         carService.addCar(car2);
         carService.addCar(car3);
 
-        // Opret bud
         try {
-            bidService.placeBid("Anna Jensen", 140000, "AB12345"); // Bud på car1
-            bidService.placeBid("Bo Hansen", 170000, "CD67890");  // Bud på car2
-            bidService.placeBid("Clara Madsen", 175000, "CD67890"); // Bud på car2
-            bidService.placeBid("David Holm", 130000, "EF24680");  // Bud på car3
-            bidService.placeBid("Eva Sørensen", 145000, "AB12345"); // Bud på car1
+            bidService.placeBid("Anna Jensen", 140000, "AB12345");
+            bidService.placeBid("Bo Hansen", 170000, "CD67890");
+            bidService.placeBid("Clara Madsen", 175000, "CD67890");
+            bidService.placeBid("David Holm", 130000, "EF24680");
+            bidService.placeBid("Eva Sørensen", 145000, "AB12345");
         } catch (InvalidBidException e) {
             System.out.println("Fejl ved oprettelse af bud: " + e.getMessage());
         }
 
-        // Start brugergrænsefladen
         System.out.println("Bilauktion startet!");
 
-        // Menu og interaktion med brugeren
         boolean running = true;
         while (running) {
             System.out.println("\nVælg en mulighed:");
@@ -47,7 +42,7 @@ public class CarAuctionController {
             System.out.println("3. Vis bud på en bil");
             System.out.println("4. Afslut");
 
-            String valg = scanner.nextLine();  // Brugeren input som String
+            String valg = scanner.nextLine();
 
             switch (valg) {
                 case "1" -> visBiler();
